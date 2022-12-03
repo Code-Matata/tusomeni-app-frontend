@@ -4,8 +4,10 @@ import { colors } from "../resources/ThemeColors";
 
 const MainDiv = styled.div`
   height: 75vh;
-  background-color: ${colors.light};
+  background-color: ${colors.darkish};
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   padding: 1.5em;
 `;
@@ -25,9 +27,15 @@ function AboutPage() {
         Tusomeni is an online past-paper repository for the School of Computing
         and Information Technology classes at The Technical University of Kenya.{" "}
       </Description>
-      <Description>
-        More stuff is coming soon to a browser near you.&#128640; &#128640;
-      </Description>
+      {/* <Description>
+        We are working on some exciting products for aspiring Software Engineers
+        and Designers.&#128640; &#128640;
+        <br />
+        <br />
+        <br />
+        For software consulting services or collaborations, email us at
+        codematata@gmail.com
+      </Description> */}
     </MainDiv>
   );
 }

@@ -15,11 +15,14 @@ export default function Landing() {
       </RightDiv>
       <LeftDiv left>
         <div left>
-          <h2>Submit your papers</h2>
-          {/* <p>For 1st years and 2nd years only. A sweet effortless deal for the first person to submit.</p>
-          <a href="/submit-paper">
-            <button>How?? &#8594;</button>
-          </a> */}
+          <h2>Image to Answers</h2>
+          <p>We lost al data on Heroku, Sorry :&#91;
+            <br />
+            Get answers directly by just uploading the image of the question paper.
+          </p>
+          <a href="https://app.tusomeni.com">
+            <button>Try Now &#8594;</button>
+          </a>
         </div>
       </LeftDiv>
     </MainDiv>

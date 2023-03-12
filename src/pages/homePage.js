@@ -17,16 +17,16 @@ class HomePage extends Component {
     searchText: null,
   };
 
-  componentDidMount() {
-    this.setState({ isLoading: true });
-    fetch("https://tusome-app.herokuapp.com/api/v1/papers/getAllPapers")
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({ data });
-        this.setState({ isLoading: false });
-      })
-      .catch((error) => this.setState({ isError: true, isLoading: false }));
-  }
+  // componentDidMount() {
+  //   this.setState({ isLoading: true });
+  //   fetch("https://tusome-app.herokuapp.com/api/v1/papers/getAllPapers")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       this.setState({ data });
+  //       this.setState({ isLoading: false });
+  //     })
+  //     .catch((error) => this.setState({ isError: true, isLoading: false }));
+  // }
 
   onSearchTitle = (e) => {
     if(e.target.value === null) {
@@ -52,17 +52,17 @@ class HomePage extends Component {
     this.setState({ searchText: e.target.value });
   }
 
-  clearSearch = () => {
-    this.setState({ searchText: null });
-    this.setState({ isLoading: true });
-    fetch("https://tusome-app.herokuapp.com/api/v1/papers/getAllPapers")
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({ data });
-        this.setState({ isLoading: false });
-      })
-      .catch((error) => this.setState({ isError: true, isLoading: false }));
-  }
+  // clearSearch = () => {
+  //   this.setState({ searchText: null });
+  //   this.setState({ isLoading: true });
+  //   fetch("https://tusome-app.herokuapp.com/api/v1/papers/getAllPapers")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       this.setState({ data });
+  //       this.setState({ isLoading: false });
+  //     })
+  //     .catch((error) => this.setState({ isError: true, isLoading: false }));
+  // }
 
   render() {
     const { isError, isLoading, data, searchData } = this.state;
@@ -76,21 +76,25 @@ class HomePage extends Component {
             content="Tusomeni is a past-paper platform for Computing students at The Technical University of Kenya. We aggregate papers from previous exams and let students use them for revision."
           />
         </Helmet>
-        {/* <NotifyDiv>
-          Do you know you can get up to <strong>KES 500</strong>&#x1F911; for
-          sending us your past-papers?{" "}
-          <a href="/submit-paper" style={{ color: "white" }}>
-            Alaa, show me how &#8594;
+        <NotifyDiv>
+          To compensate for the lost data, we have built a tool to get you answers directly from images of past papers{" "}
+          <a href="https://app.tusomeni.com" style={{ color: "white" }}>
+            Try it now &#8594;
           </a>
-        </NotifyDiv> */}
-        <FilterComponent>
+        </NotifyDiv>
+        {/* <FilterComponent>
           <input onChange={this.updateText} placeholder="Search paper by name"></input><i onClick={this.clearSearch}>X</i><button onClick={this.onSearchTitle}>{isLoading ? 'Searching' : 'Search'}</button>
-        </FilterComponent>
+        </FilterComponent> */}
         {isError && (
           <DisplayContainer>
             <Error>Something went wrong... try agin later</Error>
           </DisplayContainer>
         )}
+        <DisplayContainer>
+            <Error>Unfortunately, we lost all data on Heroku -- we are working tirelessly to rebuild the backend</Error>
+            <Error>In the mean time, we have built a <a href="https://app.tusomeni.com" color="white" style={{color: "white"}}>tool</a> to help you get answers directly from past paper images</Error>
+            <a href="https://app.tusomeni.com" color="white" style={{color: "white", fontSize: "1.2em"}}>Try it now &#8594;</a> 
+          </DisplayContainer>
         {isLoading && (
           <DisplayContainer>
             <Loaders />
@@ -104,11 +108,11 @@ class HomePage extends Component {
             ))}
           </CardsContainer>
         )}
-        {} {(data?.length === 0 && !isLoading) && (
+        {/* {(data?.length === 0 && !isLoading) && (
           <CardsContainer>
             <p>No results found</p>
           </CardsContainer>
-        )}
+        )} */}
       </MainDiv>
     );
   }
@@ -190,6 +194,10 @@ const DisplayContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin: 2em 3em 3em 2em;
+
+  > a {
+      /* text-decoration: none; */
+    }
 `;
 
 const Error = styled.p`
